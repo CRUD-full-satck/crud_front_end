@@ -1,9 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IClient } from "../../context/interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../Input";
-import formClientSchema from "./schema";
-import { InputsRegisterProps } from "./interfaces";
+import formRegisterSchema from "./schema";
+import { IInputKeys } from "../Input/interface";
+import { IClient } from "../../context/interfaces";
 import api from "../../services/api";
 import { AxiosError } from "axios";
 
@@ -12,11 +12,11 @@ const FormRegister = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IClient>({
-    resolver: yupResolver(formClientSchema),
+  } = useForm<IInputKeys>({
+    resolver: yupResolver(formRegisterSchema),
   });
 
-  const registerClient: SubmitHandler<InputsRegisterProps> = async (client) => {
+  const registerClient: SubmitHandler<IClient> = async (client) => {
     const { confirmPassword, ...data } = client;
     try {
       await api.post("/client", data);
@@ -30,7 +30,7 @@ const FormRegister = () => {
   return (
     <form onSubmit={handleSubmit(registerClient)}>
       <Input
-        value="name"
+        id="name"
         type="text"
         label="Nome"
         required
@@ -38,7 +38,7 @@ const FormRegister = () => {
         error={errors.name?.message}
       />
       <Input
-        value="email"
+        id="email"
         type="text"
         label="Email"
         required
@@ -46,7 +46,7 @@ const FormRegister = () => {
         error={errors.email?.message}
       />
       <Input
-        value="password"
+        id="password"
         type="text"
         label="Senha"
         required
@@ -54,7 +54,7 @@ const FormRegister = () => {
         error={errors.password?.message}
       />
       <Input
-        value="confirmPassword"
+        id="confirmPassword"
         type="text"
         label="Confirme Senha"
         required
@@ -62,7 +62,7 @@ const FormRegister = () => {
         error={errors.confirmPassword?.message}
       />
       <Input
-        value="phone"
+        id="phone"
         type="text"
         label="Telefone"
         required
@@ -70,7 +70,7 @@ const FormRegister = () => {
         error={errors.phone?.message}
       />
 
-      <input type="submit" value="Registrar" />
+      <input type="submit" value="Cadastrar" />
     </form>
   );
 };

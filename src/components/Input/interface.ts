@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from "react";
 import { UseFormRegister } from "react-hook-form";
 
 export interface IInputKeys {
@@ -8,8 +9,8 @@ export interface IInputKeys {
   phone: string;
 }
 
-export interface InputProps {
-  value: string;
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  id: string;
   label: string;
   type: string;
   register: UseFormRegister<IInputKeys>;

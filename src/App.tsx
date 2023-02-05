@@ -1,5 +1,11 @@
+import RoutesPage from "./routes";
+
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <RoutesPage />
+    </div>
+  );
 }
 
 export default App;

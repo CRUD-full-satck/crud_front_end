@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-const formClientSchema = yup.object().shape({
+const formRegisterSchema = yup.object().shape({
   name: yup
     .string()
     .required("Name is required")
@@ -23,4 +23,4 @@ const formClientSchema = yup.object().shape({
     .matches(/^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/, "Invalid phone number"),
 });
 
-export default formClientSchema;
+export default formRegisterSchema;

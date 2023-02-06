@@ -6,6 +6,7 @@ import { IInputKeys } from "../Input/interface";
 import { IClient } from "../../context/interfaces";
 import api from "../../services/api";
 import { AxiosError } from "axios";
+import { ButtomForm } from "../../style/global";
 
 const FormRegister = () => {
   const {
@@ -65,7 +66,7 @@ const FormRegister = () => {
         error={errors.phone?.message}
       />
 
-      <input type="submit" value="Cadastrar" />
+      <ButtomForm type="submit" value="Cadastrar" />
     </form>
   );
 };

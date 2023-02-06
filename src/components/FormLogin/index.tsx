@@ -4,6 +4,7 @@ import formLoginSchema from "./schema";
 import { IInputKeys } from "../Input/interface";
 import Input from "../Input";
 import useClientContext from "../../context/clientContext";
+import { ButtomForm } from "../../style/global";
 
 const FormLogin = () => {
   const {
@@ -33,7 +34,7 @@ const FormLogin = () => {
         error={errors.password?.message}
       />
 
-      <input type="submit" value="Logar" />
+      <ButtomForm type="submit" value="Logar" />
     </form>
   );
 };

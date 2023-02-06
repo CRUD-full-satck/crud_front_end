@@ -6,8 +6,8 @@ const ListContacts = () => {
 
   return (
     <ul>
-      {contacts!.map((contact, index) => {
-        return <CardContact key={index} {...contact} />;
+      {contacts!.map((contact) => {
+        return <CardContact key={contact.id} {...contact} />;
       })}
     </ul>
   );

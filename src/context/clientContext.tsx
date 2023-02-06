@@ -1,14 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
-import { IClientContext, IClientLogin, IClientProvider, IContacts } from "./interfaces";
+import { IClientContext, IClientLogin, IClientProvider, IContact } from "./interfaces";
 
 const ClientContext = createContext<IClientContext>({} as IClientContext);
 
 export const ClientProvider = ({ children }: IClientProvider) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true);
-  const [contacts, setContacts] = useState<IContacts[] | null>(null);
+  const [contacts, setContacts] = useState<IContact[] | null>(null);
 
   useEffect(() => {
     const token: string | null = localStorage.getItem("@TOKEN");

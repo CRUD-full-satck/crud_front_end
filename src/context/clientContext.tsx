@@ -1,14 +1,23 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
-import { IClientContext, IClientLogin, IClientProvider, IContact } from "./interfaces";
+import {
+  IClientContext,
+  IClientLogin,
+  IClientProvider,
+  IContact,
+  IContactResponse,
+} from "./interfaces";
 
 const ClientContext = createContext<IClientContext>({} as IClientContext);
 
 export const ClientProvider = ({ children }: IClientProvider) => {
-  const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true);
-  const [contacts, setContacts] = useState<IContact[] | null>(null);
+  const [modalUpdateContact, setModalUpdateContact] = useState<boolean>(false);
+  const [contacts, setContacts] = useState<IContactResponse[] | null>(null);
+  const [idContact, setIdContact] = useState<string>("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token: string | null = localStorage.getItem("@TOKEN");
@@ -27,6 +36,32 @@ export const ClientProvider = ({ children }: IClientProvider) => {
   const postContact = async (data: IContact) => {
     try {
       await api.post("/contacts/client", data);
+
+      await getContacts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const patchContact = async (data: IContact) => {
+    const dateFilter = Object.fromEntries(
+      Object.entries(data).filter((value) => {
+        return !!value[1];
+      })
+    );
+
+    try {
+      await api.patch(`/contacts/${idContact}/client`, dateFilter);
+
+      await getContacts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteContact = async (id: string) => {
+    try {
+      await api.delete(`/contacts/${id}/client`);
 
       await getContacts();
     } catch (error) {
@@ -64,7 +99,19 @@ export const ClientProvider = ({ children }: IClientProvider) => {
   }
 
   return (
-    <ClientContext.Provider value={{ login, loading, contacts, postContact }}>
+    <ClientContext.Provider
+      value={{
+        login,
+        loading,
+        contacts,
+        postContact,
+        deleteContact,
+        modalUpdateContact,
+        setModalUpdateContact,
+        patchContact,
+        setIdContact,
+      }}
+    >
       {children}
     </ClientContext.Provider>
   );

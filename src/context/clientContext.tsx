@@ -14,24 +14,25 @@ export const ClientProvider = ({ children }: IClientProvider) => {
     const token: string | null = localStorage.getItem("@TOKEN");
 
     async function load() {
-      console.log(loading);
       if (token) {
-        try {
-          api.defaults.headers.authorization = `Bearer ${token}`;
+        api.defaults.headers.authorization = `Bearer ${token}`;
 
-          const response = await api.get("/contacts/client");
-
-          setContacts(response.data);
-
-          console.log(response);
-        } catch (error) {
-          console.error(error);
-        }
+        await getContacts();
       }
       setLoading(false);
     }
     load();
   }, []);
+
+  const postContact = async (data: IContact) => {
+    try {
+      await api.post("/contacts/client", data);
+
+      await getContacts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const login = async (data: IClientLogin): Promise<void> => {
     try {
@@ -42,12 +43,7 @@ export const ClientProvider = ({ children }: IClientProvider) => {
       localStorage.setItem("@TOKEN", token);
       api.defaults.headers.authorization = `Bearer ${token}`;
 
-      try {
-        const responseData = await api.get("/contacts/client");
-        setContacts(responseData.data);
-      } catch (error) {
-        console.error("erro do get", error);
-      }
+      await getContacts();
 
       navigate("/dashboard", { replace: true });
 
@@ -57,8 +53,18 @@ export const ClientProvider = ({ children }: IClientProvider) => {
     }
   };
 
+  async function getContacts() {
+    try {
+      const response = await api.get("/contacts/client");
+
+      setContacts(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
-    <ClientContext.Provider value={{ login, loading, contacts }}>
+    <ClientContext.Provider value={{ login, loading, contacts, postContact }}>
       {children}
     </ClientContext.Provider>
   );

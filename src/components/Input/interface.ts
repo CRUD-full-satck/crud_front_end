@@ -12,7 +12,7 @@ export interface IInputKeys {
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
-  type: string;
+  type?: string;
   register: UseFormRegister<IInputKeys>;
   error: string | undefined;
   required?: boolean;

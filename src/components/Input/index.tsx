@@ -1,7 +1,7 @@
 import { FieldPath } from "react-hook-form";
 import { IInputKeys, InputProps } from "./interface";
 
-const Input = ({ required = false, ...props }: InputProps) => {
+const Input = ({ required = false, type = "text", ...props }: InputProps) => {
   return (
     <div>
       <label htmlFor={props.id}>
@@ -11,7 +11,7 @@ const Input = ({ required = false, ...props }: InputProps) => {
       <div>
         <input
           id={props.id}
-          type={props.type}
+          type={type}
           {...props.register(props.id as FieldPath<IInputKeys>)}
         />
         {props.error && <span>{props.error}</span>}

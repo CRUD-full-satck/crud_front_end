@@ -31,7 +31,6 @@ const FormRegister = () => {
     <form onSubmit={handleSubmit(registerClient)}>
       <Input
         id="name"
-        type="text"
         label="Nome"
         required
         register={register}
@@ -39,7 +38,6 @@ const FormRegister = () => {
       />
       <Input
         id="email"
-        type="text"
         label="Email"
         required
         register={register}
@@ -47,7 +45,6 @@ const FormRegister = () => {
       />
       <Input
         id="password"
-        type="text"
         label="Senha"
         required
         register={register}
@@ -55,7 +52,6 @@ const FormRegister = () => {
       />
       <Input
         id="confirmPassword"
-        type="text"
         label="Confirme Senha"
         required
         register={register}
@@ -63,7 +59,6 @@ const FormRegister = () => {
       />
       <Input
         id="phone"
-        type="text"
         label="Telefone"
         required
         register={register}

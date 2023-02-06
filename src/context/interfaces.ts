@@ -20,4 +20,5 @@ export interface IClientContext {
   login: (data: IClientLogin) => void;
   loading: boolean;
   contacts: IContact[] | null;
+  postContact: (data: IContact) => void;
 }

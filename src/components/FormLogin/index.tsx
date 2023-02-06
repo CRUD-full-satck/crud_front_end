@@ -21,15 +21,13 @@ const FormLogin = () => {
       <Input
         id="email"
         label="Email"
-        type="text"
         required
         register={register}
         error={errors.email?.message}
       />
       <Input
         id="password"
-        label="Password"
-        type="text"
+        label="Senha"
         required
         register={register}
         error={errors.password?.message}

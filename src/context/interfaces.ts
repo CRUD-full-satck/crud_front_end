@@ -10,10 +10,14 @@ export interface IClient {
 
 export type IClientLogin = Pick<IClient, "email" | "password">;
 
+export type IContacts = Omit<IClient, "password" | "confirmPassword">;
+
 export interface IClientProvider {
   children: ReactNode;
 }
 
 export interface IClientContext {
   login: (data: IClientLogin) => void;
+  loading: boolean;
+  contacts: IContacts[] | null;
 }

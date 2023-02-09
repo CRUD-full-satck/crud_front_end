@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-export const ContainerInput = styled.div`
-  width: auto;
+export const InputContainer = styled.div`
+  text-align: left;
   display: flex;
   flex-direction: column;
   gap: 6px;
 
   & label {
-    font-size: 15px;
+    color: white;
+    font-size: 13px;
     & span {
       color: red;
     }
@@ -15,14 +16,16 @@ export const ContainerInput = styled.div`
 `;
 
 export const InputBase = styled.div`
-  width: auto;
+  height: 40px;
+  border-radius: 8px;
+  background: white;
   display: flex;
-  border: 2px solid black;
-  border-radius: 5px;
 
   & input {
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
+    height: 100%;
+    font-size: 18px;
+    /* background-color: red; */
   }
 `;
+// export const InputContainer = styled.div``

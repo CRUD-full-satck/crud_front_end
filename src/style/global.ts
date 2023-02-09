@@ -1,32 +1,38 @@
-import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-export const FormBase = styled.div`
-  width: 20rem;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  border-radius: 10px;
-  border: 2px solid black;
+const GlobalStyle = createGlobalStyle`
+    :root {
+        --color-book-1: 54,54,54;
+        --color-book-2: 79,79,79;
+        --color-book-3: 105,105,105;
+        --color-book-4: 128,128,128;
+    }
 
-  & h1 {
-    font-size: 25px;
-    font-weight: 700;
-  }
 
-  & form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-  }
+    * {
+        margin:0;
+        padding:0;
+        outline:none;
+        list-style:none;
+        text-decoration:none;
+        box-sizing:border-box;
+        color:#000;
+        background: transparent;
+        font-family:  'Inter', sans-serif;
+        border:none;
+    }
+    html, body, .wrap {
+        height: 100%;
+        width: 100%; 
+
+        .wrap {
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+    }
+
+
 `;
 
-export const ButtomForm = styled.input`
-  padding: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  border: 3px solid black;
-  border-radius: 5px;
-  background-color: transparent;
-`;
+export default GlobalStyle;

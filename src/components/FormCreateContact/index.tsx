@@ -4,7 +4,6 @@ import { IInputKeys } from "../Input/interface";
 import { yupResolver } from "@hookform/resolvers/yup";
 import formCreateContactSchema from "./schema";
 import useClientContext from "../../context/clientContext";
-import { ButtomForm } from "../../style/global";
 
 const FormCreateContact = () => {
   const {
@@ -41,7 +40,7 @@ const FormCreateContact = () => {
         error={errors.phone?.message}
       />
 
-      <ButtomForm type="submit" value="Criar Contato" />
+      <input type="submit" value="Criar Contato" />
     </form>
   );
 };

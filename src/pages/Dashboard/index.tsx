@@ -2,22 +2,20 @@ import ListContacts from "../../components/ListContacts/index.";
 import FormCreateContact from "../../components/FormCreateContact/index";
 import useClientContext from "../../context/clientContext";
 import ModalEditContact from "../../components/ModalEditContact";
-import { DashboardContainer, ListContactStyle } from "./style";
-import { FormBase } from "../../style/global";
 
 const PageDashboard = () => {
   const { modalUpdateContact } = useClientContext();
   return (
-    <DashboardContainer>
-      <FormBase>
+    <div>
+      <div>
         <FormCreateContact />
-      </FormBase>
-      <ListContactStyle>
+      </div>
+      <div>
         <h1>Dashboard</h1>
         <ListContacts />
-      </ListContactStyle>
+      </div>
       {modalUpdateContact && <ModalEditContact />}
-    </DashboardContainer>
+    </div>
   );
 };
 

@@ -1,10 +1,10 @@
 import { FieldPath } from "react-hook-form";
 import { IInputKeys, InputProps } from "./interface";
-import { ContainerInput, InputBase } from "./style";
+import { InputBase, InputContainer } from "./style";
 
 const Input = ({ required = false, type = "text", ...props }: InputProps) => {
   return (
-    <ContainerInput>
+    <InputContainer>
       <label htmlFor={props.id}>
         {props.label}
         {required && <span> *</span>}
@@ -17,7 +17,7 @@ const Input = ({ required = false, type = "text", ...props }: InputProps) => {
         />
         {props.error && <span>{props.error}</span>}
       </InputBase>
-    </ContainerInput>
+    </InputContainer>
   );
 };
 

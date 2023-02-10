@@ -19,16 +19,30 @@ const FormUpdateContact = () => {
 
   return (
     <form onSubmit={handleSubmit(patchContact)}>
-      <Input id="name" label="Nome" register={register} error={errors.name?.message} />
-      <Input id="email" label="Email" register={register} error={errors.email?.message} />
       <Input
-        id="phone"
-        label="Telefone"
+        id="name"
+        label="Name"
         register={register}
-        error={errors.phone?.message}
+        error={errors.name?.message}
+        placeholder="Contact name"
+      />
+      <Input
+        id="email"
+        label="Email"
+        register={register}
+        error={errors.email?.message}
+        placeholder="email@email.com"
       />
 
-      <ButtonForm type="submit" value="Atualizar Contato" />
+      <Input
+        id="phone"
+        label="Phone"
+        register={register}
+        error={errors.phone?.message}
+        placeholder="********"
+      />
+
+      <ButtonForm type="submit" value="Update Contact" />
     </form>
   );
 };

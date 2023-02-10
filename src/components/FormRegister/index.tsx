@@ -5,8 +5,9 @@ import formRegisterSchema from "./schema";
 import { IInputKeys } from "../Input/interface";
 import { IClient } from "../../context/interfaces";
 import api from "../../services/api";
-import { AxiosError } from "axios";
 import { ButtonForm } from "../../style/buttons";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FormRegister = () => {
   const {
@@ -21,10 +22,16 @@ const FormRegister = () => {
     const { confirmPassword, ...data } = client;
     try {
       await api.post("/client", data);
-    } catch (e) {
-      const error = e as AxiosError;
+      toast.success("Registered User");
+    } catch (error: any) {
+      const { response } = error;
+      if (response.status === 401) {
+        toast.error(response.data.message);
+      } else {
+        toast.warning("Oops... something went wrong, reload the page please.");
+      }
 
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -32,10 +39,11 @@ const FormRegister = () => {
     <form onSubmit={handleSubmit(registerClient)}>
       <Input
         id="name"
-        label="Nome"
+        label="Name"
         required
         register={register}
         error={errors.name?.message}
+        placeholder="Your name"
       />
       <Input
         id="email"
@@ -43,30 +51,36 @@ const FormRegister = () => {
         required
         register={register}
         error={errors.email?.message}
+        placeholder="email@email.com"
       />
       <Input
         id="password"
-        label="Senha"
+        label="Password"
+        type="password"
         required
         register={register}
         error={errors.password?.message}
+        placeholder="********"
       />
       <Input
         id="confirmPassword"
-        label="Confirme Senha"
+        label="Confirm Password"
+        type="password"
         required
         register={register}
         error={errors.confirmPassword?.message}
+        placeholder="********"
       />
       <Input
         id="phone"
-        label="Telefone"
+        label="Phone"
         required
         register={register}
         error={errors.phone?.message}
+        placeholder="(DDD) 99999-9999"
       />
 
-      <ButtonForm type="submit" value="Cadastrar" />
+      <ButtonForm type="submit" value="Register" />
     </form>
   );
 };

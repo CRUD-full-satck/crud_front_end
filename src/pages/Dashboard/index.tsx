@@ -12,9 +12,11 @@ import {
 import { ContainerFormCreateContact } from "./style";
 import { LastPage } from "./style";
 import { useEffect, useState } from "react";
-import { ContainerModal } from "../../style/containerModal";
+import { ContainerModal } from "../../style/modal";
 import { ContainerForm } from "../../style/containerForm";
 import FormLogin from "../../components/FormLogin";
+import { ToastContainer, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PageDashboard = () => {
   const [effect, setEffect] = useState<boolean>(false);
@@ -28,35 +30,49 @@ const PageDashboard = () => {
   }, []);
 
   return (
-    <BookContainer>
-      <Book effect={effect}>
-        <BookOpenFront>
-          <ContainerForm>
-            <h1>Login</h1>
-            <FormLogin />
-          </ContainerForm>
-        </BookOpenFront>
-        {array.map(() => (
-          <Page />
-        ))}
-        <Page>
-          <ContainerFormCreateContact>
-            <h1>Adicione seu contato</h1>
-            <FormCreateContact />
-          </ContainerFormCreateContact>
-        </Page>
-        <LastPage>
-          <ListContacts />
-          {/* <button>proxima</button> */}
-          {modalUpdateContact && (
-            <ContainerModal>
-              <ModalEditContact />
-            </ContainerModal>
-          )}
-        </LastPage>
-        <BookOpenBack />
-      </Book>
-    </BookContainer>
+    <>
+      <BookContainer>
+        <Book effect={effect}>
+          <BookOpenFront>
+            <ContainerForm>
+              <h1>Login</h1>
+              <FormLogin />
+            </ContainerForm>
+          </BookOpenFront>
+          {array.map((value) => (
+            <Page key={value} />
+          ))}
+          <Page>
+            <ContainerFormCreateContact>
+              <h1>Add your contact</h1>
+              <FormCreateContact />
+            </ContainerFormCreateContact>
+          </Page>
+          <LastPage>
+            <ListContacts />
+            {modalUpdateContact && (
+              <ContainerModal>
+                <ModalEditContact />
+              </ContainerModal>
+            )}
+          </LastPage>
+          <BookOpenBack />
+        </Book>
+      </BookContainer>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        transition={Flip}
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+    </>
   );
 };
 

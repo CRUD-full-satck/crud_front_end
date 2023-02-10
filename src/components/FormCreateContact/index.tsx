@@ -21,10 +21,11 @@ const FormCreateContact = () => {
     <form onSubmit={handleSubmit(postContact)}>
       <Input
         id="name"
-        label="Nome"
+        label="Name"
         required
         register={register}
         error={errors.name?.message}
+        placeholder="Contact name"
       />
       <Input
         id="email"
@@ -32,16 +33,18 @@ const FormCreateContact = () => {
         required
         register={register}
         error={errors.email?.message}
+        placeholder="email@email.com"
       />
       <Input
         id="phone"
-        label="Telefone"
+        label="Phone"
         required
         register={register}
         error={errors.phone?.message}
+        placeholder="(DDD) 99999-9999"
       />
 
-      <ButtonForm type="submit" value="Criar Contato" />
+      <ButtonForm type="submit" value="Create contact" />
     </form>
   );
 };

@@ -4,6 +4,7 @@ import { IInputKeys } from "../Input/interface";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useClientContext from "../../context/clientContext";
 import formUpdateContactSchema from "./schema";
+import { ButtonForm } from "../../style/buttons";
 
 const FormUpdateContact = () => {
   const {
@@ -27,7 +28,7 @@ const FormUpdateContact = () => {
         error={errors.phone?.message}
       />
 
-      <input type="submit" value="Atualizar Contato" />
+      <ButtonForm type="submit" value="Atualizar Contato" />
     </form>
   );
 };

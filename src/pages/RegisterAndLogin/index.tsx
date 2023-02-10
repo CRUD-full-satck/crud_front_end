@@ -5,19 +5,26 @@ import {
   BookWrap,
   BorderBook,
   Perspective,
+  BorderBottonBook,
 } from "../../style/flippedBook";
 import { useState } from "react";
 import FormRegister from "../../components/FormRegister";
 import { RegisterContainer } from "./style";
 import { ContainerForm } from "../../style/containerForm";
 import { HiOutlineUserCircle } from "react-icons/hi";
+import useClientContext from "../../context/clientContext";
 
 const PageRegistrationAndLogin = () => {
+  const { effectLogin } = useClientContext();
   const [flipped, setFlipped] = useState(false);
 
   return (
     <Perspective>
-      <BookWrap flipped={flipped} onClick={(e) => setFlipped(!flipped)}>
+      <BookWrap
+        flipped={flipped}
+        effectLogin={effectLogin}
+        onClick={(e) => setFlipped(!flipped)}
+      >
         <BookFront>
           <ContainerForm onClick={(e) => e.stopPropagation()}>
             <h1>Login</h1>
@@ -25,6 +32,7 @@ const PageRegistrationAndLogin = () => {
           </ContainerForm>
         </BookFront>
         <BorderBook />
+        <BorderBottonBook />
         <BookBack>
           <RegisterContainer onClick={(e) => e.stopPropagation()}>
             <h1>Register</h1>

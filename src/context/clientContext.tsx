@@ -13,6 +13,7 @@ const ClientContext = createContext<IClientContext>({} as IClientContext);
 
 export const ClientProvider = ({ children }: IClientProvider) => {
   const [loading, setLoading] = useState<boolean>(true);
+  const [effectLogin, setEffectLogin] = useState<boolean>(false);
   const [modalUpdateContact, setModalUpdateContact] = useState<boolean>(false);
   const [contacts, setContacts] = useState<IContactResponse[] | null>(null);
   const [idContact, setIdContact] = useState<string>("");
@@ -70,6 +71,12 @@ export const ClientProvider = ({ children }: IClientProvider) => {
   };
 
   const login = async (data: IClientLogin): Promise<void> => {
+    setEffectLogin(true);
+
+    setTimeout(() => {
+      navigate("/dashboard", { replace: true });
+    }, 1000);
+
     try {
       const response = await api.post("/login", data);
 
@@ -80,9 +87,9 @@ export const ClientProvider = ({ children }: IClientProvider) => {
 
       await getContacts();
 
-      navigate("/dashboard", { replace: true });
       console.log(response, token);
     } catch (error) {
+      setEffectLogin(false);
       console.log("erro do post", error);
     }
   };
@@ -109,6 +116,8 @@ export const ClientProvider = ({ children }: IClientProvider) => {
         setModalUpdateContact,
         patchContact,
         setIdContact,
+        effectLogin,
+        setEffectLogin,
       }}
     >
       {children}

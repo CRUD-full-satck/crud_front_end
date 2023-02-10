@@ -32,4 +32,6 @@ export interface IClientContext {
   setModalUpdateContact: (modalUpdateContact: boolean) => void;
   patchContact: (data: IContact) => void;
   setIdContact: (idContact: string) => void;
+  effectLogin: boolean;
+  setEffectLogin: (effectLogin: boolean) => void;
 }

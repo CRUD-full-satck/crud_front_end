@@ -10,4 +10,5 @@ export const ButtonForm = styled.input`
   font-weight: 600;
   text-align: center;
   color: white;
+  cursor: pointer;
 `;

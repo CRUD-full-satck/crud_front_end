@@ -1,5 +1,14 @@
+import { ClientProvider } from "./context/clientContext";
+import RoutesPage from "./routes";
+import GlobalStyle from "./style/global";
+
 function App() {
-  return <div></div>;
+  return (
+    <ClientProvider>
+      <GlobalStyle />
+      <RoutesPage />
+    </ClientProvider>
+  );
 }
 
 export default App;

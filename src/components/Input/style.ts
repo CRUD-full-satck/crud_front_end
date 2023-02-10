@@ -7,7 +7,7 @@ export const InputContainer = styled.div`
   gap: 6px;
 
   & label {
-    color: white;
+    /* color: white; */
     font-size: 13px;
     & span {
       color: red;

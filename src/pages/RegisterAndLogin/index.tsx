@@ -8,7 +8,8 @@ import {
 } from "../../style/flippedBook";
 import { useState } from "react";
 import FormRegister from "../../components/FormRegister";
-import { LoginContainer, RegisterContainer } from "./style";
+import { RegisterContainer } from "./style";
+import { ContainerForm } from "../../style/containerForm";
 import { HiOutlineUserCircle } from "react-icons/hi";
 
 const PageRegistrationAndLogin = () => {
@@ -18,10 +19,10 @@ const PageRegistrationAndLogin = () => {
     <Perspective>
       <BookWrap flipped={flipped} onClick={(e) => setFlipped(!flipped)}>
         <BookFront>
-          <LoginContainer onClick={(e) => e.stopPropagation()}>
+          <ContainerForm onClick={(e) => e.stopPropagation()}>
             <h1>Login</h1>
             <FormLogin />
-          </LoginContainer>
+          </ContainerForm>
         </BookFront>
         <BorderBook />
         <BookBack>

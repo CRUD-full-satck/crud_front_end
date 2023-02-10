@@ -81,7 +81,6 @@ export const ClientProvider = ({ children }: IClientProvider) => {
       await getContacts();
 
       navigate("/dashboard", { replace: true });
-
       console.log(response, token);
     } catch (error) {
       console.log("erro do post", error);

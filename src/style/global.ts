@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
         border:none;
     }
     html, body, .wrap {
-        height: 100%;
+        height: 100vh;
         width: 100%; 
 
         .wrap {

@@ -2,12 +2,13 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { TbPencil } from "react-icons/tb";
 import { IContactResponse } from "../../context/interfaces";
 import useClientContext from "../../context/clientContext";
+import { Card } from "./style";
 
 const CardContact = ({ ...props }: IContactResponse) => {
   const { deleteContact, setModalUpdateContact, setIdContact } = useClientContext();
 
   return (
-    <li>
+    <Card>
       <div>
         <TbPencil
           onClick={() => {
@@ -17,10 +18,10 @@ const CardContact = ({ ...props }: IContactResponse) => {
         />
         <TiDeleteOutline onClick={() => deleteContact(props.id)} />
       </div>
-      <span>{props.name}</span>
-      <span>{props.email}</span>
-      <span>{props.phone}</span>
-    </li>
+      <span>Nome: {props.name}</span>
+      <span>Email: {props.email}</span>
+      <span>Tel: {props.phone}</span>
+    </Card>
   );
 };
 

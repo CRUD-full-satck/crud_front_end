@@ -20,13 +20,17 @@ export const ContainerFormCreateContact = styled(ContainerForm)`
       }
 
       & div {
+        flex-direction: row-reverse;
+
         width: 100%;
         & input {
           transform: rotateY(180deg);
         }
 
-        & span {
-          transform: rotateY(180deg);
+        & div {
+          & span {
+            width: 9rem;
+          }
         }
       }
     }
@@ -36,8 +40,8 @@ export const ContainerFormCreateContact = styled(ContainerForm)`
       width: 10rem;
       height: 45px;
       background: transparent;
-      border: 4px solid rgba(var(--color-book-3), 1);
-      color: rgba(var(--color-book-3), 1);
+      border: 4px solid rgba(var(--color-book-1), 1);
+      color: rgba(var(--color-book-1), 1);
       font-weight: 700;
       margin-left: 175px;
       transform: rotateY(180deg);

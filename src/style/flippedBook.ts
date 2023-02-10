@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface props {
   flipped: boolean;
+  effectLogin: boolean;
 }
 
 export const Perspective = styled.div`
@@ -13,6 +14,7 @@ export const Perspective = styled.div`
 `;
 
 export const BookWrap = styled.div<props>`
+  position: absolute;
   height: 100%;
   width: 100%;
   transform-style: preserve-3d;
@@ -21,8 +23,19 @@ export const BookWrap = styled.div<props>`
   -moz-transition: all 1s ease-out;
   -ms-transition: all 1s ease-out;
   -o-transition: all 1s ease-out;
-  transform: rotateY(20deg);
+  transform: rotatey(15deg) rotatex(10deg);
+
   ${(props) => props.flipped && `transform:rotateY(180deg);`}
+
+  ${(props) =>
+    props.effectLogin &&
+    `
+    {
+      transform: rotateX(40deg);
+      translate: 17rem;
+      scale: 1.2;
+    }
+  `}
 `;
 
 export const BookFront = styled.div`
@@ -56,10 +69,26 @@ export const BorderBook = styled.div`
 
   position: absolute;
   right: 0;
-  left: -550px;
+  left: -549px;
   top: 0;
   bottom: 0;
   margin: auto;
   background: black;
   transform: rotateY(-80deg) translateX(-14px);
+`;
+
+export const BorderBottonBook = styled(BorderBook)`
+  height: 0px;
+  width: 539px;
+
+  left: 10px;
+  top: -15px;
+  bottom: -750px;
+  background: transparent;
+  translate: 0 0 -15px;
+
+  border-bottom: 27px solid #ffffff;
+  border-left: 6px solid transparent;
+
+  transform: rotateX(-90deg) translateX(-15px);
 `;

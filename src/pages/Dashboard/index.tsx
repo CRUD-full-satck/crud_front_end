@@ -12,35 +12,48 @@ import {
 import { ContainerFormCreateContact } from "./style";
 import { LastPage } from "./style";
 import { useEffect, useState } from "react";
+import { ContainerModal } from "../../style/containerModal";
+import { ContainerForm } from "../../style/containerForm";
+import FormLogin from "../../components/FormLogin";
 
 const PageDashboard = () => {
   const [effect, setEffect] = useState<boolean>(false);
-  const { modalUpdateContact } = useClientContext();
+  const { modalUpdateContact, setEffectLogin } = useClientContext();
 
   const array = [1, 2, 3, 4];
 
   useEffect(() => {
     setEffect(true);
+    setEffectLogin(false);
   }, []);
 
   return (
     <BookContainer>
       <Book effect={effect}>
-        <BookOpenFront />
+        <BookOpenFront>
+          <ContainerForm>
+            <h1>Login</h1>
+            <FormLogin />
+          </ContainerForm>
+        </BookOpenFront>
         {array.map(() => (
           <Page />
         ))}
         <Page>
           <ContainerFormCreateContact>
-            <h1>Teste</h1>
+            <h1>Adicione seu contato</h1>
             <FormCreateContact />
           </ContainerFormCreateContact>
         </Page>
         <LastPage>
           <ListContacts />
-          <button>proxima</button>
+          {/* <button>proxima</button> */}
+          {modalUpdateContact && (
+            <ContainerModal>
+              <ModalEditContact />
+            </ContainerModal>
+          )}
         </LastPage>
-        {modalUpdateContact && <ModalEditContact />}
         <BookOpenBack />
       </Book>
     </BookContainer>

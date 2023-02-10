@@ -20,15 +20,13 @@ export const Book = styled.div<props>`
   position: absolute;
   transform-style: preserve-3d;
   transform: rotateX(40deg);
-  transition: transform 4s;
-
+  transition: all 4s;
   cursor: pointer;
 
   ${(props) =>
     props.effect &&
     `
     transform: rotateX(10deg);
-    left: 50%;
     
     div:nth-child(1) {
       transform: rotateY(-180deg);
@@ -46,6 +44,12 @@ export const BookOpenFront = styled(BookFront)`
   transition: all 3s;
   transform-origin: center left;
   z-index: 1;
+
+  & div {
+    & h1 {
+      transform: rotateY(180deg);
+    }
+  }
 `;
 
 export const BookOpenBack = styled(BookFront)`

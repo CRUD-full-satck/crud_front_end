@@ -16,6 +16,7 @@ export const InputContainer = styled.div`
 `;
 
 export const InputBase = styled.div`
+  padding: 0 5px 0 5px;
   height: 40px;
   border-radius: 8px;
   background: white;
@@ -25,11 +26,10 @@ export const InputBase = styled.div`
     border-radius: 8px;
     width: 100%;
     height: 100%;
-    font-size: 18px;
+    font-size: 14px;
   }
 `;
 export const Error = styled.div`
-  padding-right: 5px;
   position: relative;
   display: flex;
   align-items: center;

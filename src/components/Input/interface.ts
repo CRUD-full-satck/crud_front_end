@@ -16,4 +16,5 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   register: UseFormRegister<IInputKeys>;
   error: string | undefined;
   required?: boolean;
+  placeholder?: string;
 }

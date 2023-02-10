@@ -8,6 +8,8 @@ import {
   IContact,
   IContactResponse,
 } from "./interfaces";
+import { toast } from "react-toastify";
+import { AxiosError } from "axios";
 
 const ClientContext = createContext<IClientContext>({} as IClientContext);
 
@@ -39,8 +41,17 @@ export const ClientProvider = ({ children }: IClientProvider) => {
       await api.post("/contacts/client", data);
 
       await getContacts();
-    } catch (error) {
-      console.log(error);
+
+      toast.success("Contact created.");
+    } catch (error: any) {
+      const { response } = error;
+      if (response.status === 401) {
+        toast.error(response.data.message);
+      } else {
+        toast.warning("Oops... something went wrong, reload the page please.");
+      }
+
+      console.error(error);
     }
   };
 
@@ -55,8 +66,17 @@ export const ClientProvider = ({ children }: IClientProvider) => {
       await api.patch(`/contacts/${idContact}/client`, dateFilter);
 
       await getContacts();
-    } catch (error) {
-      console.log(error);
+
+      toast.success("Updated contact.");
+    } catch (error: any) {
+      const { response } = error;
+      if (response.status === 401) {
+        toast.error(response.data.message);
+      } else {
+        toast.warning("Oops... something went wrong, reload the page please.");
+      }
+
+      console.error(error);
     }
   };
 
@@ -65,17 +85,18 @@ export const ClientProvider = ({ children }: IClientProvider) => {
       await api.delete(`/contacts/${id}/client`);
 
       await getContacts();
-    } catch (error) {
-      console.log(error);
+
+      toast.success("Contact deleted.");
+    } catch (e) {
+      toast.warning("Oops... something went wrong, reload the page please.");
+
+      const error = e as AxiosError;
+      console.error(error);
     }
   };
 
   const login = async (data: IClientLogin): Promise<void> => {
     setEffectLogin(true);
-
-    setTimeout(() => {
-      navigate("/dashboard", { replace: true });
-    }, 1000);
 
     try {
       const response = await api.post("/login", data);
@@ -84,13 +105,20 @@ export const ClientProvider = ({ children }: IClientProvider) => {
 
       localStorage.setItem("@TOKEN", token);
       api.defaults.headers.authorization = `Bearer ${token}`;
+      toast.success("User logged in.");
 
       await getContacts();
-
-      console.log(response, token);
-    } catch (error) {
+      navigate("/dashboard", { replace: true });
+    } catch (error: any) {
       setEffectLogin(false);
-      console.log("erro do post", error);
+
+      const { response } = error;
+      if (response?.status === 403) {
+        toast.error(response.data.message);
+      } else {
+        toast.warning("Oops... something went wrong, reload the page please.");
+      }
+      console.error(error);
     }
   };
 
@@ -99,7 +127,10 @@ export const ClientProvider = ({ children }: IClientProvider) => {
       const response = await api.get("/contacts/client");
 
       setContacts(response.data);
-    } catch (error) {
+    } catch (e) {
+      toast.warning("Oops... something went wrong, reload the page please.");
+
+      const error = e as AxiosError;
       console.error(error);
     }
   }

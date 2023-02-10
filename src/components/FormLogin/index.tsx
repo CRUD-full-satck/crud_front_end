@@ -25,16 +25,19 @@ const FormLogin = () => {
         required
         register={register}
         error={errors.email?.message}
+        placeholder="email@email.com"
       />
       <Input
         id="password"
-        label="Senha"
+        label="Password"
+        type="password"
+        placeholder="********"
         required
         register={register}
         error={errors.password?.message}
       />
 
-      <ButtonForm type="submit" value="Logar" />
+      <ButtonForm type="submit" value="Login" />
     </form>
   );
 };

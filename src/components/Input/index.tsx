@@ -7,13 +7,13 @@ const Input = ({ required = false, type = "text", ...props }: InputProps) => {
   return (
     <InputContainer>
       <label htmlFor={props.id}>
-        {props.label}
-        {required && <span> *</span>}
+        {props.label}:{required && <span> *</span>}
       </label>
       <InputBase>
         <input
           id={props.id}
           type={type}
+          placeholder={props.placeholder}
           {...props.register(props.id as FieldPath<IInputKeys>)}
         />
         {props.error && (

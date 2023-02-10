@@ -18,9 +18,9 @@ const CardContact = ({ ...props }: IContactResponse) => {
         />
         <TiDeleteOutline onClick={() => deleteContact(props.id)} />
       </div>
-      <span>Nome: {props.name}</span>
+      <span>Name: {props.name}</span>
       <span>Email: {props.email}</span>
-      <span>Tel: {props.phone}</span>
+      <span>Phone: {props.phone}</span>
     </Card>
   );
 };

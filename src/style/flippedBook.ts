@@ -46,7 +46,7 @@ export const BookFront = styled.div`
   box-shadow: 38px 0px 42px -16px rgba(0, 0, 0, 0.31) inset;
   -webkit-box-shadow: 38px 0px 42px -16px rgba(0, 0, 0, 0.31) inset;
   -moz-box-shadow: 38px 0px 42px -16px rgba(0, 0, 0, 0.31) inset;
-  background-image: url("public/img/book_front.png");
+  background-image: url("/img/book_front.png");
   background-size: 160%;
   background-position: 57%;
   background-repeat: no-repeat;
@@ -63,7 +63,7 @@ export const BookFront = styled.div`
 export const BookBack = styled(BookFront)`
   padding: 8.5rem 7rem;
   border-radius: 10px 0 0 10px;
-  background-image: url("public/img/book_back.png");
+  background-image: url("/img/book_back.png");
   background-position: 50%;
   transform: rotate(180deg) translateZ(-30px) translateX(5px);
   box-shadow: -38px 0px 42px -16px rgba(0, 0, 0, 0.4) inset;

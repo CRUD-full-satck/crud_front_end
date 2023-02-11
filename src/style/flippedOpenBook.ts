@@ -62,7 +62,7 @@ export const BookOpenBack = styled(BookFront)`
 export const Page = styled.div`
   width: 640px;
   height: 830px;
-  background-image: url("../../public/img/page.png");
+  background-image: url("/img/page.png");
   background-size: cover;
   background-position: center;
   cursor: default;

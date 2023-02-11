@@ -20,7 +20,8 @@ const FormLogin = () => {
   return (
     <form onSubmit={handleSubmit(login)}>
       <Input
-        id="email"
+        id="emailLogin"
+        value="email"
         label="Email"
         required
         register={register}
@@ -28,7 +29,8 @@ const FormLogin = () => {
         placeholder="email@email.com"
       />
       <Input
-        id="password"
+        id="passwordLogin"
+        value="password"
         label="Password"
         type="password"
         placeholder="********"

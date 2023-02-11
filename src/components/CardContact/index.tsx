@@ -10,13 +10,13 @@ const CardContact = ({ ...props }: IContactResponse) => {
   return (
     <Card>
       <div>
+        <TiDeleteOutline onClick={() => deleteContact(props.id)} />
         <TbPencil
           onClick={() => {
             setIdContact(props.id);
             setModalUpdateContact(true);
           }}
         />
-        <TiDeleteOutline onClick={() => deleteContact(props.id)} />
       </div>
       <span>Name: {props.name}</span>
       <span>Email: {props.email}</span>

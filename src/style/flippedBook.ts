@@ -23,7 +23,7 @@ export const BookWrap = styled.div<props>`
   -moz-transition: all 1s ease-out;
   -ms-transition: all 1s ease-out;
   -o-transition: all 1s ease-out;
-  transform: rotatey(15deg) rotatex(10deg);
+  transform: rotatey(20deg) rotatex(10deg);
 
   ${(props) => props.flipped && `transform:rotateY(180deg);`}
 
@@ -41,12 +41,16 @@ export const BookWrap = styled.div<props>`
 export const BookFront = styled.div`
   width: 550px;
   height: 750px;
-  padding: 10rem 7rem;
+  padding: 15rem 7rem;
   border-radius: 0 20px 20px 0;
-  box-shadow: 38px 0px 42px -26px rgba(0, 0, 0, 0.31) inset;
-  -webkit-box-shadow: 38px 0px 42px -26px rgba(0, 0, 0, 0.31) inset;
-  -moz-box-shadow: 38px 0px 42px -26px rgba(0, 0, 0, 0.31) inset;
-  background-color: rgba(var(--color-book-3), 1);
+  box-shadow: 38px 0px 42px -16px rgba(0, 0, 0, 0.31) inset;
+  -webkit-box-shadow: 38px 0px 42px -16px rgba(0, 0, 0, 0.31) inset;
+  -moz-box-shadow: 38px 0px 42px -16px rgba(0, 0, 0, 0.31) inset;
+  background-image: url("public/img/book_front.png");
+  background-size: 160%;
+  background-position: 57%;
+  background-repeat: no-repeat;
+  background-color: var(--color-book-1);
   position: absolute;
   top: 0;
   left: 0;
@@ -57,9 +61,14 @@ export const BookFront = styled.div`
 `;
 
 export const BookBack = styled(BookFront)`
-  padding: 7rem;
+  padding: 8.5rem 7rem;
   border-radius: 10px 0 0 10px;
+  background-image: url("public/img/book_back.png");
+  background-position: 50%;
   transform: rotate(180deg) translateZ(-30px) translateX(5px);
+  box-shadow: -38px 0px 42px -16px rgba(0, 0, 0, 0.4) inset;
+  -webkit-box-shadow: -38px 0px 42px -16px rgba(0, 0, 0, 0.4) inset;
+  -moz-box-shadow: -38px 0px 42px -16px rgba(0, 0, 0, 0.4) inset;
 `;
 
 export const BorderBook = styled.div`
@@ -73,7 +82,8 @@ export const BorderBook = styled.div`
   top: 0;
   bottom: 0;
   margin: auto;
-  background: black;
+  background: var(--color-book-2);
+
   transform: rotateY(-80deg) translateX(-14px);
 `;
 

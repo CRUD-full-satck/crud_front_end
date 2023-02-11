@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { BookFront } from "./flippedBook";
 
 interface props {
-  effect: boolean;
+  effect?: boolean;
 }
 
 export const BookContainer = styled.div`
@@ -28,14 +28,14 @@ export const Book = styled.div<props>`
     `
     transform: rotateX(10deg);
     
-    div:nth-child(1) {
+    & div:nth-child(1) {
       transform: rotateY(-180deg);
     }
-    div:nth-child(n + 2):nth-child(-n + 6) {
+    & div:nth-child(n + 2):nth-child(-n + 6) {
       transform: rotateY(-180deg);
       z-index: 2;
     }
-    `}
+  `}
 `;
 
 export const BookOpenFront = styled(BookFront)`
@@ -62,9 +62,10 @@ export const BookOpenBack = styled(BookFront)`
 export const Page = styled.div`
   width: 640px;
   height: 830px;
-  background-image: url("../../public/img/image.png");
+  background-image: url("../../public/img/page.png");
   background-size: cover;
   background-position: center;
+  cursor: default;
 
   border-radius: 0 10px 10px 0;
   transform-origin: center left;
@@ -75,6 +76,9 @@ export const Page = styled.div`
   z-index: -1;
 
   &:nth-child(n + 3):nth-child(-n + 5) {
+    box-shadow: 200px 0px 400px -152px rgba(0, 0, 0, 1) inset;
+    -webkit-box-shadow: 200px 0px 400px -152px rgba(0, 0, 0, 1) inset;
+    -moz-box-shadow: 200px 0px 400px -152px rgba(0, 0, 0, 1) inset;
   }
 
   &:nth-child(2) {
@@ -91,7 +95,16 @@ export const Page = styled.div`
   }
   &:nth-child(6) {
     padding: 10rem 4rem;
-
     transition-duration: 5s;
+
+    & a {
+      display: flex;
+      align-items: center;
+      transform: rotateY(180deg);
+      position: absolute;
+      bottom: 35px;
+      right: 50px;
+      text-decoration: underline;
+    }
   }
 `;

@@ -20,36 +20,29 @@ export const ContainerFormCreateContact = styled(ContainerForm)`
       }
 
       & div {
+        border: none;
         flex-direction: row-reverse;
 
         width: 100%;
         & input {
           transform: rotateY(180deg);
         }
-
-        & div {
-          & span {
-            width: 9rem;
-          }
-        }
       }
     }
 
     & input:nth-child(4) {
       margin-top: 3.2rem;
-      width: 10rem;
+      width: 15rem;
       height: 45px;
-      background: transparent;
-      border: 4px solid rgba(var(--color-book-1), 1);
-      color: rgba(var(--color-book-1), 1);
       font-weight: 700;
-      margin-left: 175px;
+      margin-left: 135px;
       transform: rotateY(180deg);
     }
   }
 `;
 
 export const LastPage = styled(Page)`
+  padding: 6rem 0 5rem 0;
   & ul {
     padding: 30px;
     padding-left: 52px;
@@ -57,5 +50,4 @@ export const LastPage = styled(Page)`
     grid-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
   }
-  /* background: aqua; */
 `;

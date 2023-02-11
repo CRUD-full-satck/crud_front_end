@@ -4,7 +4,7 @@ import { IInputKeys } from "../Input/interface";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useClientContext from "../../context/clientContext";
 import formUpdateContactSchema from "./schema";
-import { ButtonForm } from "../../style/buttons";
+import { ButtonForm2 } from "../../style/buttons";
 
 const FormUpdateContact = () => {
   const {
@@ -20,14 +20,16 @@ const FormUpdateContact = () => {
   return (
     <form onSubmit={handleSubmit(patchContact)}>
       <Input
-        id="name"
+        id="nameUpdateContact"
+        value="name"
         label="Name"
         register={register}
         error={errors.name?.message}
         placeholder="Contact name"
       />
       <Input
-        id="email"
+        id="emailUpdateContact"
+        value="email"
         label="Email"
         register={register}
         error={errors.email?.message}
@@ -35,14 +37,15 @@ const FormUpdateContact = () => {
       />
 
       <Input
-        id="phone"
+        id="phoneUpdateContact"
+        value="phone"
         label="Phone"
         register={register}
         error={errors.phone?.message}
         placeholder="********"
       />
 
-      <ButtonForm type="submit" value="Update Contact" />
+      <ButtonForm2 type="submit" value="Update Contact" />
     </form>
   );
 };

@@ -18,6 +18,7 @@ export const Card = styled.li`
     & svg {
       height: 20px;
       width: 20px;
+      cursor: pointer;
     }
   }
 `;

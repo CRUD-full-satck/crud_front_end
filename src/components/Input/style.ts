@@ -7,8 +7,8 @@ export const InputContainer = styled.div`
   gap: 6px;
 
   & label {
-    /* color: white; */
     font-size: 13px;
+    font-weight: 600;
     & span {
       color: red;
     }
@@ -19,7 +19,8 @@ export const InputBase = styled.div`
   padding: 0 5px 0 5px;
   height: 40px;
   border-radius: 8px;
-  background: white;
+  background: #ffffff;
+  border: 2px solid #000070;
   display: flex;
 
   & input {
@@ -27,6 +28,7 @@ export const InputBase = styled.div`
     width: 100%;
     height: 100%;
     font-size: 14px;
+    color: var(--color-font-2);
   }
 `;
 export const Error = styled.div`
@@ -44,6 +46,7 @@ export const Error = styled.div`
     padding: 4px 15px;
     border-radius: 3px;
     translate: 100%;
+    width: max-content;
     opacity: 0;
     transition: opacity 0.4s;
 
@@ -54,12 +57,14 @@ export const Error = styled.div`
       transform: rotate(90deg);
       border-color: #f10 transparent;
       position: absolute;
-      top: 18px;
+      top: 9px;
       left: -8px;
     }
   }
 
-  & svg {
+  & svg,
+  path {
+    color: var(--color-font-3);
     width: 25px;
     height: 25px;
   }

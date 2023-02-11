@@ -34,4 +34,6 @@ export interface IClientContext {
   setIdContact: (idContact: string) => void;
   effectLogin: boolean;
   setEffectLogin: (effectLogin: boolean) => void;
+  flipped: boolean;
+  setFlipped: (flipped: boolean) => void;
 }

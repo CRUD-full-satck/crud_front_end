@@ -4,7 +4,7 @@ import { IInputKeys } from "../Input/interface";
 import { yupResolver } from "@hookform/resolvers/yup";
 import formCreateContactSchema from "./schema";
 import useClientContext from "../../context/clientContext";
-import { ButtonForm } from "../../style/buttons";
+import { ButtonForm2 } from "../../style/buttons";
 
 const FormCreateContact = () => {
   const {
@@ -20,7 +20,8 @@ const FormCreateContact = () => {
   return (
     <form onSubmit={handleSubmit(postContact)}>
       <Input
-        id="name"
+        id="nameCreateContact"
+        value="name"
         label="Name"
         required
         register={register}
@@ -28,7 +29,8 @@ const FormCreateContact = () => {
         placeholder="Contact name"
       />
       <Input
-        id="email"
+        id="emailCreateContact"
+        value="email"
         label="Email"
         required
         register={register}
@@ -36,7 +38,8 @@ const FormCreateContact = () => {
         placeholder="email@email.com"
       />
       <Input
-        id="phone"
+        id="phoneCreateContact"
+        value="phone"
         label="Phone"
         required
         register={register}
@@ -44,7 +47,7 @@ const FormCreateContact = () => {
         placeholder="(DDD) 99999-9999"
       />
 
-      <ButtonForm type="submit" value="Create contact" />
+      <ButtonForm2 type="submit" value="Create contact" />
     </form>
   );
 };

@@ -15,8 +15,10 @@ const ClientContext = createContext<IClientContext>({} as IClientContext);
 
 export const ClientProvider = ({ children }: IClientProvider) => {
   const [loading, setLoading] = useState<boolean>(true);
+  const [flipped, setFlipped] = useState(false);
   const [effectLogin, setEffectLogin] = useState<boolean>(false);
   const [modalUpdateContact, setModalUpdateContact] = useState<boolean>(false);
+
   const [contacts, setContacts] = useState<IContactResponse[] | null>(null);
   const [idContact, setIdContact] = useState<string>("");
 
@@ -149,6 +151,8 @@ export const ClientProvider = ({ children }: IClientProvider) => {
         setIdContact,
         effectLogin,
         setEffectLogin,
+        flipped,
+        setFlipped,
       }}
     >
       {children}

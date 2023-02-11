@@ -8,8 +8,11 @@ import api from "../../services/api";
 import { ButtonForm } from "../../style/buttons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useClientContext from "../../context/clientContext";
 
 const FormRegister = () => {
+  const { setFlipped } = useClientContext();
+
   const {
     register,
     handleSubmit,
@@ -23,6 +26,7 @@ const FormRegister = () => {
     try {
       await api.post("/client", data);
       toast.success("Registered User");
+      setFlipped(false);
     } catch (error: any) {
       const { response } = error;
       if (response.status === 401) {
@@ -38,7 +42,8 @@ const FormRegister = () => {
   return (
     <form onSubmit={handleSubmit(registerClient)}>
       <Input
-        id="name"
+        id="nameRegister"
+        value="name"
         label="Name"
         required
         register={register}
@@ -46,7 +51,8 @@ const FormRegister = () => {
         placeholder="Your name"
       />
       <Input
-        id="email"
+        id="emailRegister"
+        value="email"
         label="Email"
         required
         register={register}
@@ -54,7 +60,8 @@ const FormRegister = () => {
         placeholder="email@email.com"
       />
       <Input
-        id="password"
+        id="passwordRegister"
+        value="password"
         label="Password"
         type="password"
         required
@@ -64,6 +71,7 @@ const FormRegister = () => {
       />
       <Input
         id="confirmPassword"
+        value="confirmPassword"
         label="Confirm Password"
         type="password"
         required
@@ -72,7 +80,8 @@ const FormRegister = () => {
         placeholder="********"
       />
       <Input
-        id="phone"
+        id="phoneRegister"
+        value="phone"
         label="Phone"
         required
         register={register}

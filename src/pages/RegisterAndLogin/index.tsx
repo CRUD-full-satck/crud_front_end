@@ -7,17 +7,14 @@ import {
   Perspective,
   BorderBottonBook,
 } from "../../style/flippedBook";
-import { useState } from "react";
 import FormRegister from "../../components/FormRegister";
-import { RegisterContainer } from "./style";
-import { ContainerForm } from "../../style/containerForm";
+import { RegisterContainer, LoginContainer, Paragraph } from "./style";
 import useClientContext from "../../context/clientContext";
 import { ToastContainer, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const PageRegistrationAndLogin = () => {
-  const { effectLogin } = useClientContext();
-  const [flipped, setFlipped] = useState(false);
+  const { effectLogin, flipped, setFlipped } = useClientContext();
 
   return (
     <>
@@ -25,13 +22,16 @@ const PageRegistrationAndLogin = () => {
         <BookWrap
           flipped={flipped}
           effectLogin={effectLogin}
-          onClick={(e) => setFlipped(!flipped)}
+          onClick={() => setFlipped(!flipped)}
         >
           <BookFront>
-            <ContainerForm onClick={(e) => e.stopPropagation()}>
+            <LoginContainer onClick={(e) => e.stopPropagation()}>
               <h1>Login</h1>
               <FormLogin />
-            </ContainerForm>
+            </LoginContainer>
+            <Paragraph>
+              To go to the registration screen, click anywhere on the screen.
+            </Paragraph>
           </BookFront>
           <BorderBook />
           <BorderBottonBook />

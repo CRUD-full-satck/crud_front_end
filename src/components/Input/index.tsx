@@ -14,7 +14,7 @@ const Input = ({ required = false, type = "text", ...props }: InputProps) => {
           id={props.id}
           type={type}
           placeholder={props.placeholder}
-          {...props.register(props.id as FieldPath<IInputKeys>)}
+          {...props.register(props.value as FieldPath<IInputKeys>)}
         />
         {props.error && (
           <Error>

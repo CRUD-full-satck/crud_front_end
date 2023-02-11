@@ -17,6 +17,8 @@ import { ContainerForm } from "../../style/containerForm";
 import FormLogin from "../../components/FormLogin";
 import { ToastContainer, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const PageDashboard = () => {
   const [effect, setEffect] = useState<boolean>(false);
@@ -47,6 +49,10 @@ const PageDashboard = () => {
               <h1>Add your contact</h1>
               <FormCreateContact />
             </ContainerFormCreateContact>
+            <Link to="/login" replace onClick={() => localStorage.clear()}>
+              <MdOutlineArrowBackIosNew />
+              back to login screen
+            </Link>
           </Page>
           <LastPage>
             <ListContacts />
